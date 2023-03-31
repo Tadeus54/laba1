@@ -1,0 +1,86 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("3адание 1:");
+        int[] array;
+        array = new int[10];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = ((int) (Math.random() * 100) + 1);
+            System.out.print(array[i] + "\t");
+        }
+        System.out.println();
+        int max = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (max < array[i] & array[i] % 2 == 0) {
+                max = array[i];
+            }
+        }
+        System.out.println("Maксимaльный:" + max);
+        //-----------------------------------------------------------------------
+        System.out.println("зaдание 2:");
+        System.out.println("Введите количество строк двумерного масссива:");
+        int m = in.nextInt();
+        System.out.println("Введите количество столбцов двумерного масссива:");
+        int n = in.nextInt();
+        double[][] array1 = new double[m][n];
+        for (int i = 0; i < array1.length; i++) {
+            for (int k = 0; k < array1[i].length; k++) {
+                array1[i][k] = (double) (Math.random() * (20 + 20)) - 20;
+                System.out.print(array1[i][k] + "\t");
+            }
+            System.out.println();
+        }
+        for (int i = 0; i < array1.length; i++) {
+            double maxElement = array1[i][0];
+            for (int k = 0; k < array1[i].length; k++) {
+                if (array1[i][k] > maxElement) {
+                    maxElement = array1[i][k];
+                }
+            }
+            System.out.println("Максимальный в строке " + i + ": " + maxElement);
+        }  
+        //------------------------------------------------------------------------------
+        System.out.println("зaдание 3:");
+        int[][] array2 = new int[5][10];
+for (int i = 0; i < array2.length; i++) {           
+            for (int k = 0; k < array2[i].length; k++) {
+                array2[i][k] = ((int) (Math.random() * 99));
+                System.out.print(array2[i][k] + "\t");
+            }
+            System.out.println();
+        }
+        int x1 = 0;
+        int x2 = 0;
+        int y1 = 0;
+        int y2 = 0;
+        for (int i = 0; i < array2.length; i++) {
+            int temp = 0;
+            int maxEl = array2[i][0];
+            int minEl = array2[i][0];
+            for (int k = 0; k < array2[i].length; k++) {
+                if (array2[i][k] > maxEl) {
+                    maxEl = array2[i][k];
+                    x1 = i;
+                    y1 = k;
+                }
+                if (array2[i][k] < minEl) {
+                    minEl = array2[i][k];
+                    x2 = i;
+                    y2 = k;
+                }
+            }
+            temp = minEl;
+            array2[x2][y2] = array2[x1][y1];
+            array2[x1][y1] = temp;
+        }
+        System.out.println("Новый массив:");
+        for (int i = 0; i < array2.length; i++) {
+            for (int k = 0; k < array2[i].length; k++) {
+                System.out.print(array2[i][k] + "\t");
+            }
+            System.out.println();
+        }
+    }
+}
